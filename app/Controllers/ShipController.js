@@ -38,4 +38,23 @@ export default class ShipController {
       console.error(error)
     }
   }
+
+  createShip() {
+    try {
+      event.preventDefault()
+      let form = event.target
+      let shipInfo = {
+        // @ts-ignore
+        name: form.name.value,
+        // @ts-ignore
+        img: form.img.value,
+      }
+      shipService.create(shipInfo)
+      $('#shipModal').modal('hide');
+
+    } catch (error) {
+      console.error(error)
+
+    }
+  }
 }

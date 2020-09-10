@@ -45,10 +45,13 @@ export default class CrewController {
       event.preventDefault()
       let form = event.target
       let pirateInfo = {
+        // @ts-ignore
         name: form.name.value,
+        // @ts-ignore
         description: form.description.value
       }
       crewMembService.create(pirateInfo)
+      $('#exampleModalCenter').modal('hide');
     } catch (error) {
       console.error(error)
 

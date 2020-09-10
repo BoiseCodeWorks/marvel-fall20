@@ -3,6 +3,11 @@ import { ProxyState } from "../AppState.js";
 import Ship from "../Models/Ship.js";
 
 class ShipService {
+  async create(shipInfo) {
+    let res = await api.post("ship", shipInfo)
+    ProxyState.ships = [...ProxyState.ships, new Ship(res.data)]
+  }
+
   async setActive(id) {
     let ship = ProxyState.ships.find(s => s.id == id)
     let res = await api.get("ship/" + id + "/crew")

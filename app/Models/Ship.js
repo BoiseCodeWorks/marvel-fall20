@@ -19,23 +19,34 @@ export default class Ship {
     <div class="col-12 text-center" >
     <h3>${this.name}</h3>
     <img src="${this.img}" class="w-100" alt="ship-img">
-    <h4>This ship is currently captained by ${this.captain.name}</h4>
     ${this.Crew}
 </div>
     `
   }
   get Crew() {
     console.log(this.crew)
-    let template = ""
-    if (this.crew.length < 1 || this.crew.length == 1 && this.captain) {
-      return "No crew currently on ship"
-    }
-    template = "<p> The ships mates are "
-    this.crew.forEach(m => {
-      if (m.name != this.captain.name) {
+    if (this.crew.length == 1 && this.captain != undefined) {
+      return `<h4>This ship is currently captained by ${this.captain.name}</h4>
+      <p> No crew currently on ship</p>`
+    } else if (this.crew.length < 1) {
+      return `<p> No crew currently on ship</p>`
+    } else if (this.captain != undefined) {
 
-        template += m.name + `<i class="fa fa-trash" aria-hidden="true" onclick="app.crewController.delist('${m.id}')"></i>  / `
-      }
+      let template = `<h4>This ship is currently captained by ${this.captain.name}</h4>`
+      template += "<p> The ships mates are "
+      this.crew.forEach(m => {
+        if (m.name != this.captain.name) {
+
+          template += m.name + `<i class="fa fa-trash" aria-hidden="true" onclick="app.crewController.delist('${m.id}')"></i>  / `
+        }
+      })
+      template += "</p>"
+      return template
+    }
+    let template = ``
+    template += "<p> The ships mates are "
+    this.crew.forEach(m => {
+      template += m.name + `<i class="fa fa-trash" aria-hidden="true" onclick="app.crewController.delist('${m.id}')"></i>  / `
     })
     template += "</p>"
     return template
