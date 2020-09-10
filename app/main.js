@@ -1,9 +1,10 @@
-import ApiHeroesController from "./Controllers/ApiHeroesController.js";
-import MyHeroesController from "./Controllers/MyHeroesController.js";
+import CrewController from "./Controllers/CrewController.js";
+import ShipController from "./Controllers/ShipController.js";
+
 
 class App {
-  apiHeroesController = new ApiHeroesController();
-  myHeroesController = new MyHeroesController();
+  crewController = new CrewController();
+  shipController = new ShipController();
 }
 
 window["app"] = new App();

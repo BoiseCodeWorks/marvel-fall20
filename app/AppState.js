@@ -1,14 +1,11 @@
 import { EventEmitter } from "./Utils/EventEmitter.js"
 import { isValidProp } from "./Utils/isValidProp.js"
-import Hero from "./Models/Hero.js"
 
 class AppState extends EventEmitter {
-  /**@type {Hero[]} */
-  apiHeroes = []
-  /**@type {Hero} */
-  activeHero = null
-  /**@type {Hero[]} */
-  myHeroes = []
+  members = []
+  ships = []
+  activeCrew = null
+  activeShip = null
 }
 
 export const ProxyState = new Proxy(new AppState(), {
