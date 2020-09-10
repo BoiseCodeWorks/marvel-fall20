@@ -25,14 +25,16 @@ export default class Ship {
     `
   }
   get Crew() {
+    console.log(this.crew)
     let template = ""
-    if (this.crew.length == 0) {
+    if (this.crew.length < 1 || this.crew.length == 1 && this.captain) {
       return "No crew currently on ship"
     }
     template = "<p> The ships mates are "
     this.crew.forEach(m => {
       if (m.name != this.captain.name) {
-        template += m.name + " - "
+
+        template += m.name + `<i class="fa fa-trash" aria-hidden="true" onclick="app.crewController.delist('${m.id}')"></i>  / `
       }
     })
     template += "</p>"

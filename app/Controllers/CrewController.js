@@ -50,12 +50,24 @@ export default class CrewController {
       }
       crewMembService.create(pirateInfo)
     } catch (error) {
+      console.error(error)
+
     }
   }
-  recruitMember() {
+  recruitMember(shipId, crewId) {
     try {
-
+      console.log(shipId, crewId)
+      crewMembService.recruit(shipId, crewId)
     } catch (error) {
+      console.error(error)
+
+    }
+  }
+  delist(crewId) {
+    try {
+      crewMembService.delist(crewId)
+    } catch (error) {
+      console.error(error)
 
     }
   }

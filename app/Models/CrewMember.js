@@ -1,4 +1,4 @@
-import { ProxyState } from "../AppState"
+import { ProxyState } from "../AppState.js"
 
 export default class Ship {
   constructor(data) {
@@ -31,12 +31,11 @@ export default class Ship {
         <h4>Enlisted on the ${this.ship.name}</h4>`
     }
     let template = ""
-    let harboredShips = ProxyState.ships.forEach(s => template += `
-    <p>${s.name}<button onclick="app.crewController.recruitMember(${s.id},${this.id})" class="btn btn-info"> Aye</button></p>
+    ProxyState.ships.forEach(s => template += `
+    <p>${s.name}<button onclick="app.crewController.recruitMember('${s.id}','${this.id}')" class="btn btn-info"> Aye</button></p>
     `)
 
-    return `Currently not part of a crew \n What ship wants to recruit them? 
-    `
+    return `Currently not part of a crew \n What ship wants to recruit them?` + template
 
   }
 
