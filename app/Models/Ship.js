@@ -20,7 +20,7 @@ export default class Ship {
     <h3>${this.name}</h3>
     <img src="${this.img}" class="w-100" alt="ship-img">
     ${this.Crew}
-</div>
+    </div>
     `
   }
   get Crew() {
@@ -31,12 +31,10 @@ export default class Ship {
     } else if (this.crew.length < 1) {
       return `<p> No crew currently on ship</p>`
     } else if (this.captain != undefined) {
-
       let template = `<h4>This ship is currently captained by ${this.captain.name}</h4>`
       template += "<p> The ships mates are "
       this.crew.forEach(m => {
         if (m.name != this.captain.name) {
-
           template += m.name + `<i class="fa fa-trash" aria-hidden="true" onclick="app.crewController.delist('${m.id}')"></i>  / `
         }
       })
@@ -50,7 +48,6 @@ export default class Ship {
     })
     template += "</p>"
     return template
-
   }
 
 

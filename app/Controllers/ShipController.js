@@ -51,7 +51,6 @@ export default class ShipController {
       }
       shipService.create(shipInfo)
       $('#shipModal').modal('hide');
-
     } catch (error) {
       console.error(error)
 

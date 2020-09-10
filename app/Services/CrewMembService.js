@@ -3,28 +3,19 @@ import { ProxyState } from "../AppState.js";
 import CrewMember from "../Models/CrewMember.js";
 
 class CrewMembService {
-  async delist(crewId) {
-    let res = await api.put("crew/" + crewId, { ship: null })
-    ProxyState.activeShip.crew = ProxyState.activeShip.crew.filter(m => m.id != crewId)
-    ProxyState.activeShip = ProxyState.activeShip
-    this.getMembers()
+  constructor() {
+    console.log("crewmembservice");
   }
 
   setActive(id) {
     let member = ProxyState.members.find(m => m.id == id)
     ProxyState.activeCrew = member
   }
-
   async create(pirateInfo) {
     let res = await api.post("crew", pirateInfo)
     console.log(res)
     ProxyState.members = [...ProxyState.members, new CrewMember(res.data)]
   }
-
-  constructor() {
-    console.log("crewmembservice");
-  }
-
   async getMembers() {
     let res = await api.get("crew")
     console.log(res)
@@ -36,6 +27,13 @@ class CrewMembService {
     ProxyState.activeCrew = new CrewMember(res.data)
     this.getMembers()
   }
+  async delist(crewId) {
+    let res = await api.put("crew/" + crewId, { ship: null })
+    ProxyState.activeShip.crew = ProxyState.activeShip.crew.filter(m => m.id != crewId)
+    ProxyState.activeShip = ProxyState.activeShip
+    this.getMembers()
+  }
+
 }
 
 const CREWMEMBSERVICE = new CrewMembService();

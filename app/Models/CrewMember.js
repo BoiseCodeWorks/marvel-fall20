@@ -21,7 +21,6 @@ export default class Ship {
     <p>${this.description}</p>
     <hr/>
     ${this.Ship}
-   
     </div>
     `
   }
