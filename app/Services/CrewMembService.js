@@ -8,6 +8,11 @@ class CrewMembService {
     ProxyState.activeCrew = member
   }
 
+  async create(pirateInfo) {
+    let res = await api.post("crew", pirateInfo)
+    console.log(res)
+    ProxyState.members = [...ProxyState.members, new CrewMember(res.data)]
+  }
 
   constructor() {
     console.log("crewmembservice");
@@ -19,8 +24,6 @@ class CrewMembService {
     ProxyState.members = res.data.map(h => new CrewMember(h))
   }
 
-  viewHero(heroId) {
-  }
 }
 
 const CREWMEMBSERVICE = new CrewMembService();

@@ -40,4 +40,23 @@ export default class CrewController {
       console.error(error)
     }
   }
+  createPirate() {
+    try {
+      event.preventDefault()
+      let form = event.target
+      let pirateInfo = {
+        name: form.name.value,
+        description: form.description.value
+      }
+      crewMembService.create(pirateInfo)
+    } catch (error) {
+    }
+  }
+  recruitMember() {
+    try {
+
+    } catch (error) {
+
+    }
+  }
 }

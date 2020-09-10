@@ -22,8 +22,6 @@ class ShipService {
     ProxyState.ships = res.data.map(h => new Ship(h))
   }
 
-  viewHero(heroId) {
-  }
 }
 
 const SHIPSERVICE = new ShipService();
